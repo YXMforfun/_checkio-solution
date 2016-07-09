@@ -33,6 +33,18 @@ def checkio(marbles, step):
         return ratio * (white/length)
     
     return round(sum(calculate(l) for l in product(['w','b'], repeat=step-1)), 2)
+
+#recursion
+def checio1(marbles, step):
+    white_rate = marbles.count('w') / len(marbles)
+    black_rate = 1 - white_rate
+    if step == 1:
+        return white_rate
+    else :
+        return sum([
+            white_rate * checkio1(marbles.replace('w', 'b', 1), step-1),
+            black_rate * checkio1(marbles.replace('b', 'w', 1), step-1)
+        ])
     
     
     if __name__ == '__main__':
