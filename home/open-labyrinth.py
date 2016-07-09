@@ -68,6 +68,24 @@ def checkio(maze_map):
     for i in result:
         st += i
     return st
+
+#recursion
+def checkio(maze_map):
+    MOVE = {"S": (1, 0), "N": (-1, 0), "W": (0, -1), "E": (0, 1)}
+    route = ""
+    path = []
+    def find_route(route, path, pos):
+        for d, move in MOVE.items():
+            x = pos[0] + move[0]
+            y = pos[1] + move[1]
+            if x == 10 and y == 10:
+                return route + d
+            if (x, y) not in path and maze_map[x][y] == 0:
+                res = find_route(route + d, path + [(x, y)], (x, y))
+                if res :
+                    return res
+        return ""
+    return find_route(route, path, (1, 1))
     
 if __name__ == '__main__':
     #This code using only for self-checking and not necessary for auto-testing
