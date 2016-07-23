@@ -28,8 +28,8 @@ def count_neighbourhoods(grid, row, col):
     for diff in neighbours:
     	n_row = row + diff[0]
 	n_col = col + diff[1]
-	if 0 <= n < len(grid) and 0 <= n_col < len(grid[n_row]):
-	     if grid[n_row][n_col]:
+	if 0 <= n_row < len(grid) and 0 <= n_col < len(grid[n_row]):
+	     if grid[n_row][n_col]==1:
 	     	count += 1
     return count
 
